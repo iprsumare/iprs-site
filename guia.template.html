@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Identidade Visual IPRS</title>
+<link rel="icon" type="image/svg+xml" href="{{IMG:iprs-simbolo-azul.svg}}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Inter:wght@400;500;600&family=Lora:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --azul-renovado: #102A43;
+    --azul-ceu: #4FB8CF;
+    --preto: #0B0D10;
+    --branco: #FFFFFF;
+    --cinza-100: #F3F6F9;
+    --cinza-300: #D5DEE6;
+    --cinza-600: #5D6B79;
+    --chama: #E0452E;
+    --ok: #1F8A5B;
+
+    --bg: var(--branco);
+    --bg-soft: var(--cinza-100);
+    --fg: var(--preto);
+    --fg-muted: var(--cinza-600);
+    --line: var(--cinza-300);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0B0D10; --bg-soft: #151A20; --fg: #F3F6F9; --fg-muted: #9AA8B5; --line: #26303A;
+    }
+  }
+  :root[data-theme="dark"] { --bg: #0B0D10; --bg-soft: #151A20; --fg: #F3F6F9; --fg-muted: #9AA8B5; --line: #26303A; }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 400 16px/1.6 Inter, system-ui, sans-serif; }
+  a { color: inherit; text-decoration-color: var(--azul-ceu); text-underline-offset: 3px; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+  h1, h2, h3, h4 { font-family: Montserrat, sans-serif; line-height: 1.15; margin: 0; }
+  h2 { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--azul-ceu); font-weight: 700; margin-bottom: 8px; }
+  h3 { font-size: 26px; font-weight: 800; margin-bottom: 24px; }
+  h4 { font-size: 17px; font-weight: 700; margin: 0 0 6px; }
+  section { padding: 56px 0; border-top: 1px solid var(--line); }
+  p.lead { color: var(--fg-muted); max-width: 660px; margin: 0 0 28px; }
+
+  header.hero { background: var(--azul-renovado); color: #fff; padding: 56px 0; }
+  .hero-grid { display: flex; gap: 32px; align-items: center; flex-wrap: wrap; }
+  .hero img { width: 150px; height: 150px; }
+  .hero h1 { font-size: clamp(26px, 5vw, 42px); font-weight: 800; letter-spacing: -.01em; }
+  .hero p { color: rgba(255,255,255,.75); margin: 10px 0 0; }
+  .tag { display: inline-block; font: 700 12px Montserrat; letter-spacing: .12em; text-transform: uppercase; color: var(--azul-ceu); margin-bottom: 12px; }
+
+  /* Logo */
+  .versoes { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
+  .versao .box { border-radius: 14px; aspect-ratio: 1; display: grid; place-items: center; border: 1px solid var(--line); padding: 14%; }
+  .versao .box img { width: 100%; height: 100%; object-fit: contain; }
+  .versao b { font-family: Montserrat; display: block; margin-top: 10px; }
+  .versao span { display: block; font-size: 13.5px; color: var(--fg-muted); }
+  .versao .dl { font-size: 13px; margin-top: 4px; }
+  .box.claro { background: #fff; } .box.azul { background: var(--azul-renovado); } .box.preto { background: var(--preto); } .box.nevoa { background: var(--cinza-100); }
+
+  .regras { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+  .regra { background: var(--bg-soft); border-radius: 14px; padding: 22px; }
+  .regra p { margin: 0; color: var(--fg-muted); font-size: 15px; }
+  .regra svg { width: 100%; height: auto; display: block; }
+  .amostra { background: #fff; color: #5D6B79; border-radius: 10px; padding: 14px; margin-bottom: 16px; }
+  .tamanhos { display: flex; align-items: flex-end; gap: 22px; flex-wrap: wrap; }
+  .tamanhos figure { margin: 0; text-align: center; font-size: 12.5px; color: #5D6B79; }
+  .tamanhos img { display: block; margin: 0 auto 6px; }
+
+  .naofazer { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; }
+  .nf .box { position: relative; aspect-ratio: 1; border-radius: 12px; background: #fff; border: 1px solid var(--line); display: grid; place-items: center; overflow: hidden; }
+  .nf .box img { width: 72%; }
+  .nf .box::after { content: "✕"; position: absolute; top: 8px; right: 10px; width: 24px; height: 24px; border-radius: 50%; background: var(--chama); color: #fff; font: 700 13px/24px Inter; text-align: center; }
+  .nf p { margin: 8px 0 0; font-size: 13.5px; color: var(--fg-muted); }
+
+  /* Paleta */
+  .swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+  .sw { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--bg); }
+  .sw .chip { height: 110px; display: flex; align-items: flex-end; padding: 12px; font: 700 12px Montserrat; letter-spacing: .08em; }
+  .sw .info { padding: 14px; font-size: 14px; }
+  .sw .info b { font-family: Montserrat; display: block; font-size: 16px; }
+  .sw code { font: 500 13px ui-monospace, Menlo, monospace; color: var(--fg-muted); }
+  .ratio { display: flex; height: 28px; border-radius: 8px; overflow: hidden; margin-top: 20px; }
+  .ratio span { display: flex; align-items: center; justify-content: center; font: 700 11px Montserrat; white-space: nowrap; overflow: hidden; }
+
+  /* Tipografia */
+  .type-row { display: grid; grid-template-columns: 220px 1fr; gap: 24px; padding: 28px 0; border-bottom: 1px solid var(--line); }
+  .type-row:last-child { border-bottom: 0; }
+  .type-meta b { font-family: Montserrat; font-size: 18px; display: block; }
+  .type-meta span { color: var(--fg-muted); font-size: 14px; }
+  .s-mont { font: 800 clamp(28px, 5vw, 44px)/1.1 Montserrat; text-transform: uppercase; letter-spacing: -.01em; }
+  .s-inter { font: 400 17px/1.65 Inter; max-width: 560px; }
+  .s-lora { font: italic 500 clamp(20px, 3vw, 26px)/1.45 Lora; max-width: 600px; }
+  .s-lora small { display: block; font: 600 13px Inter; font-style: normal; letter-spacing: .08em; text-transform: uppercase; color: var(--azul-ceu); margin-top: 10px; }
+
+  .mock { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .post { aspect-ratio: 4/5; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; }
+  .post .k { font: 700 11px Montserrat; letter-spacing: .14em; text-transform: uppercase; }
+  .post .t { font: 800 30px/1.05 Montserrat; text-transform: uppercase; }
+  .post .d { font: 500 14px Inter; }
+  .post .top { display: flex; justify-content: space-between; align-items: center; }
+  .post .top img { width: 40px; height: 40px; }
+
+  /* Links */
+  .links-card { display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center; background: var(--azul-renovado); color: #fff; border-radius: 16px; padding: 28px; }
+  .links-card p { margin: 6px 0 0; color: rgba(255,255,255,.75); }
+  .btn { display: inline-flex; align-items: center; gap: 8px; background: var(--azul-ceu); color: var(--preto); font: 700 15px Montserrat; padding: 12px 18px; border-radius: 10px; text-decoration: none; white-space: nowrap; }
+
+  .findings { display: grid; gap: 12px; }
+  .f { background: var(--bg-soft); border-radius: 12px; padding: 16px 18px; border-left: 4px solid var(--azul-ceu); }
+  .f b { font-family: Montserrat; }
+  .f.warn { border-left-color: var(--chama); }
+  .f.ok { border-left-color: var(--ok); }
+  footer { padding: 40px 0 56px; color: var(--fg-muted); font-size: 13px; border-top: 1px solid var(--line); }
+
+  @media (max-width: 640px) {
+    .type-row { grid-template-columns: 1fr; gap: 10px; }
+    .links-card { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <img src="{{IMG:iprs-simbolo-cor-negativo.svg}}" alt="Símbolo da 2ª IPR Sumaré">
+    <div>
+      <span class="tag">Guia de identidade · v1</span>
+      <h1>2ª Igreja Presbiteriana<br>Renovada de Sumaré</h1>
+      <p>Igreja local da IPRB · Pastor Osvaldo Cardoso Vieira</p>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section>
+  <h2>Logo</h2>
+  <h3>Versões oficiais, em vetor</h3>
+  <p class="lead">Redesenho vetorial do logo: monograma reconstruído com a geometria do logo oficial da IPRB, texto em Montserrat convertido em curvas e um globo de verdade, centrado em Sumaré. Use sempre os arquivos da pasta <code>logo/</code> — SVG para gráfica e web, PNG para redes e apresentações.</p>
+  <div class="versoes">
+    <div class="versao"><div class="box claro"><img src="{{IMG:iprs-logo-cor.svg}}" alt=""></div><b>Colorido</b><span>Padrão em fundos claros.</span><span class="dl"><a href="logo/iprs-logo-cor.svg">SVG</a> · <a href="logo/png/iprs-logo-cor.png">PNG</a></span></div>
+    <div class="versao"><div class="box azul"><img src="{{IMG:iprs-logo-cor-negativo.svg}}" alt=""></div><b>Colorido negativo</b><span>Fundos Azul Renovado, preto e fotos escuras.</span><span class="dl"><a href="logo/iprs-logo-cor-negativo.svg">SVG</a> · <a href="logo/png/iprs-logo-cor-negativo.png">PNG</a></span></div>
+    <div class="versao"><div class="box claro"><img src="{{IMG:iprs-logo-preto.svg}}" alt=""></div><b>Uma cor · preto</b><span>Carimbo, xerox, gravação, impressão 1 cor.</span><span class="dl"><a href="logo/iprs-logo-preto.svg">SVG</a> · <a href="logo/png/iprs-logo-preto.png">PNG</a></span></div>
+    <div class="versao"><div class="box preto"><img src="{{IMG:iprs-logo-branco.svg}}" alt=""></div><b>Uma cor · branco</b><span>Camiseta escura, vinil, projeção.</span><span class="dl"><a href="logo/iprs-logo-branco.svg">SVG</a> · <a href="logo/png/iprs-logo-branco.png">PNG</a></span></div>
+    <div class="versao"><div class="box nevoa"><img src="{{IMG:iprs-logo-azul.svg}}" alt=""></div><b>Uma cor · Azul Renovado</b><span>Papelaria e peças institucionais.</span><span class="dl"><a href="logo/iprs-logo-azul.svg">SVG</a> · <a href="logo/png/iprs-logo-azul.png">PNG</a></span></div>
+    <div class="versao"><div class="box claro"><img src="{{IMG:iprs-simbolo-cor.svg}}" alt=""></div><b>Símbolo</b><span>Sem o texto: avatar, favicon, selo, espaços pequenos.</span><span class="dl"><a href="logo/iprs-simbolo-cor.svg">SVG</a> · <a href="logo/png/iprs-simbolo-cor.png">PNG</a> · <a href="logo/png/avatar-instagram.png">Avatar</a></span></div>
+  </div>
+</section>
+
+<section>
+  <h2>Regras de uso</h2>
+  <h3>Respiro, tamanho e fundo</h3>
+  <div class="regras">
+    <div class="regra">
+      <div class="amostra"><svg viewBox="-60 -60 440 415" aria-hidden="true">
+        <rect x="-41" y="-41" width="402" height="377" fill="none" stroke="#4FB8CF" stroke-width="2" stroke-dasharray="7 6"/>
+        <image href="{{IMG:iprs-logo-cor.svg}}" x="0" y="11" width="320" height="295" transform="translate(0,-11)"/>
+        <rect x="-41" y="120" width="41" height="20" fill="#4FB8CF" opacity=".35"/>
+        <text x="-20.5" y="134" text-anchor="middle" font-family="Montserrat" font-weight="700" font-size="13" fill="#102A43">2x</text>
+        <rect x="320" y="120" width="41" height="20" fill="#4FB8CF" opacity=".35"/>
+        <text x="340.5" y="134" text-anchor="middle" font-family="Montserrat" font-weight="700" font-size="13" fill="#102A43">2x</text>
+      </svg></div>
+      <h4>Área de proteção</h4>
+      <p>Deixe livre em volta do logo um espaço igual a duas vezes a altura do pingo do “i” (2x). Nenhum texto, foto ou borda entra nessa área.</p>
+    </div>
+    <div class="regra">
+      <div class="amostra"><div class="tamanhos">
+        <figure><img src="{{IMG:iprs-logo-cor.svg}}" width="120" alt="">Logo completo<br><b>mín. 4 cm · 200 px</b></figure>
+        <figure><img src="{{IMG:iprs-simbolo-cor.svg}}" width="40" alt="">Símbolo<br><b>mín. 1 cm · 32 px</b></figure>
+      </div></div>
+      <h4>Tamanho mínimo</h4>
+      <p>Abaixo de 4 cm (ou 200 px de largura) o texto em volta fica ilegível: use só o símbolo. Na tela de projeção, o logo completo deve ocupar pelo menos 1/6 da altura.</p>
+    </div>
+    <div class="regra">
+      <div class="amostra"><div class="tamanhos" style="gap:8px">
+        <figure><span style="display:block;width:52px;height:52px;border-radius:10px;background:#fff;border:1px solid #D5DEE6;margin:0 auto 6px"></span>Branco<br>Colorido</figure>
+        <figure><span style="display:block;width:52px;height:52px;border-radius:10px;background:#F3F6F9;border:1px solid #D5DEE6;margin:0 auto 6px"></span>Névoa<br>Colorido</figure>
+        <figure><span style="display:block;width:52px;height:52px;border-radius:10px;background:#102A43;margin:0 auto 6px"></span>Azul<br>Negativo</figure>
+        <figure><span style="display:block;width:52px;height:52px;border-radius:10px;background:#0B0D10;margin:0 auto 6px"></span>Preto<br>Negativo</figure>
+      </div></div>
+      <h4>Fundos</h4>
+      <p>Sobre foto, escureça a imagem (ou use uma faixa sólida) até o logo ter contraste claro. Em fundo Azul Céu, use a versão preta de uma cor.</p>
+    </div>
+  </div>
+
+  <h4 style="margin-top:36px;margin-bottom:14px">Não faça</h4>
+  <div class="naofazer">
+    <div class="nf"><div class="box"><img src="{{IMG:iprs-logo-cor.svg}}" style="transform:scaleX(1.35)" alt=""></div><p>Esticar ou achatar</p></div>
+    <div class="nf"><div class="box"><img src="{{IMG:iprs-logo-cor.svg}}" style="filter:hue-rotate(150deg) saturate(1.6)" alt=""></div><p>Trocar as cores</p></div>
+    <div class="nf"><div class="box"><img src="{{IMG:iprs-logo-cor.svg}}" style="transform:rotate(-18deg)" alt=""></div><p>Girar</p></div>
+    <div class="nf"><div class="box"><img src="{{IMG:iprs-logo-cor.svg}}" style="filter:drop-shadow(6px 8px 4px rgba(0,0,0,.55)) blur(.4px)" alt=""></div><p>Sombra, brilho ou contorno</p></div>
+    <div class="nf"><div class="box" style="background:repeating-linear-gradient(45deg,#4FB8CF 0 14px,#F7931E 14px 28px,#102A43 28px 42px)"><img src="{{IMG:iprs-logo-cor.svg}}" alt=""></div><p>Fundo sem contraste</p></div>
+    <div class="nf"><div class="box"><img src="{{IMG:old-logo.png}}" style="width:60%;image-rendering:pixelated;filter:blur(1.2px)" alt=""></div><p>Usar o PNG antigo de 320 px</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Paleta</h2>
+  <h3>Cores alinhadas à Nacional</h3>
+  <p class="lead">Base em azul escuro e azul claro, como a IPRB, com preto e branco que já são marca do nosso logo. As cores da chama ficam no próprio logo e em destaques raros.</p>
+  <div class="swatches">
+    <div class="sw"><div class="chip" style="background:#102A43;color:#fff">PRINCIPAL</div><div class="info"><b>Azul Renovado</b><code>#102A43 · RGB 16 42 67</code><br>Fundos, títulos, cabeçalhos.</div></div>
+    <div class="sw"><div class="chip" style="background:#4FB8CF;color:#0B0D10">DESTAQUE</div><div class="info"><b>Azul Céu</b><code>#4FB8CF · RGB 79 184 207</code><br>Detalhes, ícones, chamadas. Texto em cima: preto.</div></div>
+    <div class="sw"><div class="chip" style="background:#0B0D10;color:#fff">NEUTRA</div><div class="info"><b>Preto</b><code>#0B0D10 · RGB 11 13 16</code><br>Texto, fundos escuros, versão de uma cor.</div></div>
+    <div class="sw"><div class="chip" style="background:#FFFFFF;color:#0B0D10;border-bottom:1px solid #D5DEE6">NEUTRA</div><div class="info"><b>Branco</b><code>#FFFFFF</code><br>Respiro, fundos claros.</div></div>
+    <div class="sw"><div class="chip" style="background:#F3F6F9;color:#5D6B79">APOIO</div><div class="info"><b>Névoa</b><code>#F3F6F9 · #5D6B79 (texto)</code><br>Fundos suaves e texto secundário.</div></div>
+    <div class="sw"><div class="chip" style="background:linear-gradient(135deg,#FFCB3D,#F7931E 50%,#E23B2E);color:#fff">USO RESTRITO</div><div class="info"><b>Chama</b><code>#FFCB3D · #F7931E · #E23B2E</code><br>Só no logo e em destaques raros (ex.: Pentecostes).</div></div>
+  </div>
+  <div class="ratio" aria-label="Proporção sugerida de uso">
+    <span style="flex:45;background:#FFFFFF;color:#5D6B79;border:1px solid #D5DEE6">BRANCO 45%</span>
+    <span style="flex:30;background:#102A43;color:#fff">AZUL 30%</span>
+    <span style="flex:13;background:#0B0D10;color:#fff">PRETO</span>
+    <span style="flex:10;background:#4FB8CF;color:#0B0D10">CÉU</span>
+    <span style="flex:2;background:#E23B2E"></span>
+  </div>
+</section>
+
+<section>
+  <h2>Tipografia</h2>
+  <h3>Três famílias, todas gratuitas (Google Fonts)</h3>
+  <div class="type-row">
+    <div class="type-meta"><b>Montserrat</b><span>Títulos · ExtraBold/Bold<br>Mesma fonte do texto do logo</span></div>
+    <div class="s-mont">Culto de Celebração</div>
+  </div>
+  <div class="type-row">
+    <div class="type-meta"><b>Inter</b><span>Textos, avisos, sistemas<br>Mesma fonte do site da IPRB</span></div>
+    <div class="s-inter">Domingo às 19h00 · EBD às 09h00. Rua Antônio Denadai, 204, Sumaré. Venha adorar conosco — você é muito bem-vindo.</div>
+  </div>
+  <div class="type-row">
+    <div class="type-meta"><b>Lora Italic</b><span>Versículos e citações<br>Só como acento, nunca em bloco longo</span></div>
+    <div class="s-lora">“Não por força nem por violência, mas pelo meu Espírito, diz o Senhor dos Exércitos.”<small>Zacarias 4.6</small></div>
+  </div>
+</section>
+
+<section>
+  <h2>Aplicação</h2>
+  <h3>Como fica num post</h3>
+  <div class="mock">
+    <div class="post" style="background:#102A43;color:#fff">
+      <div class="top"><span class="k" style="color:#4FB8CF">Programação</span><img src="{{IMG:iprs-simbolo-branco.svg}}" alt=""></div>
+      <span class="t">Culto de<br>Santa Ceia</span>
+      <span class="d">Domingo · 19h00<br><span style="color:rgba(255,255,255,.7)">2ª IPR Sumaré</span></span>
+    </div>
+    <div class="post" style="background:#FFFFFF;color:#0B0D10;border:1px solid #D5DEE6">
+      <div class="top"><span class="k" style="color:#102A43">Pra meditar</span><img src="{{IMG:iprs-simbolo-azul.svg}}" alt=""></div>
+      <span class="s-lora" style="font-size:22px">“O Senhor é o meu pastor; nada me faltará.”<small>Salmo 23.1</small></span>
+      <span class="d" style="color:#5D6B79">@iprsumare</span>
+    </div>
+    <div class="post" style="background:#0B0D10;color:#fff">
+      <div class="top"><span class="k" style="color:#4FB8CF">Jovens</span><img src="{{IMG:iprs-simbolo-cor-negativo.svg}}" alt=""></div>
+      <span class="t">Culto de<br>Jovens</span>
+      <span class="d">Sábado · 19h30</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Página de links</h2>
+  <h3>Substituta do Linktree</h3>
+  <div class="links-card">
+    <div>
+      <h4>Horários com o próximo encontro em destaque, avisos, YouTube e como chegar</h4>
+      <p>Arquivo único em <code>links/index.html</code>. A agenda vem da planilha <a href="https://docs.google.com/spreadsheets/d/1Sb7BKAkBvqL5-H2sVREhyWkXwik2UkBTRyJJOsXfEbA/edit">IPRS - Agenda de encontros</a>: programação fixa + exceções (cancelar, alterar, adicionar).</p>
+    </div>
+    <a class="btn" href="links/index.html">Abrir página →</a>
+  </div>
+</section>
+
+<section>
+  <h2>Pendências</h2>
+  <h3>O que falta acertar</h3>
+  <div class="findings">
+    <div class="f ok"><b>Logo em vetor</b> — resolvido nesta versão (pasta <code>logo/</code>).</div>
+    <div class="f warn"><b>Bairro do endereço.</b> O Facebook diz Jd. das Palmeiras e o Linktree diz Jardim Puch. Qual é o oficial?</div>
+    <div class="f warn"><b>Nome no Facebook.</b> Trocar “2º … de Sumare-SP” por “2ª Igreja Presbiteriana Renovada de Sumaré”.</div>
+    <div class="f warn"><b>Destaques do Instagram</b> em azul royal. Refazer os ícones em Azul Renovado + Azul Céu.</div>
+    <div class="f"><b>Linktree “iprsumaree”.</b> Será aposentado quando a página de links estiver no ar.</div>
+    <div class="f"><b>E-mail @hotmail.</b> Quando houver domínio próprio, criar um contato@.</div>
+  </div>
+</section>
+
+</main>
+<footer><div class="wrap">Guia de identidade v1 · out/2026</div></footer>
+</body>
+</html>

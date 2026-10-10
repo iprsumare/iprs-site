@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>2ª IPR Sumaré · Links</title>
+<meta name="description" content="Horários de culto, grupo de avisos, transmissões e endereço da 2ª Igreja Presbiteriana Renovada de Sumaré.">
+<meta name="theme-color" content="#102A43">
+<meta property="og:title" content="2ª Igreja Presbiteriana Renovada de Sumaré">
+<meta property="og:description" content="Horários de culto, grupo de avisos, transmissões e como chegar.">
+<link rel="icon" type="image/svg+xml" href="{{FAVICON}}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&family=Lora:ital,wght@1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --azul: #102A43;
+    --azul-2: #17385A;
+    --ceu: #4FB8CF;
+    --ceu-claro: #DDF1F6;
+    --preto: #0B0D10;
+    --branco: #FFFFFF;
+    --nevoa: #F3F6F9;
+    --linha: #DCE3EA;
+    --texto-2: #5D6B79;
+
+    --bg: var(--nevoa);
+    --card: var(--branco);
+    --fg: var(--preto);
+    --fg-2: var(--texto-2);
+    --line: var(--linha);
+    --hoje: var(--ceu-claro);
+    --ic: var(--azul);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0B141E; --card: #12202F; --fg: #EEF3F7; --fg-2: #9AABBB; --line: #22344A; --hoje: #173F55; --ic: var(--ceu);
+    }
+  }
+  :root[data-theme="dark"] { --bg: #0B141E; --card: #12202F; --fg: #EEF3F7; --fg-2: #9AABBB; --line: #22344A; --hoje: #173F55; --ic: var(--ceu); }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 400 16px/1.5 Inter, system-ui, sans-serif; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--ceu); outline-offset: 3px; border-radius: 6px; }
+
+  /* ---------- Topo ---------- */
+  .topo { position: relative; overflow: hidden; background: var(--azul); color: var(--branco); padding: 36px 20px 92px; }
+  .faixas { position: absolute; right: -90px; top: -54px; width: 330px; height: auto; opacity: .14; pointer-events: none; }
+  .topo-in { position: relative; max-width: 460px; margin: 0 auto; }
+  .simbolo, .nome, .pastor { position: relative; }
+  .simbolo { width: 92px; height: 92px; display: block; margin-bottom: 22px; }
+  .nome { margin: 0; font-family: Montserrat, sans-serif; text-transform: uppercase; line-height: .98; }
+  .nome .ord { display: block; font-size: 64px; font-weight: 800; color: var(--ceu); letter-spacing: -.03em; line-height: .9; margin-bottom: 6px; }
+  .nome .ord { text-transform: none; }
+  .nome .resto { display: block; font-size: 25px; font-weight: 800; letter-spacing: -.005em; }
+  .pastor { margin: 14px 0 0; color: rgba(255,255,255,.72); font-size: 14px; }
+
+  main { max-width: 492px; margin: -64px auto 0; padding: 0 16px 40px; position: relative; }
+
+  /* ---------- Próximo culto ---------- */
+  .agenda { background: var(--card); border-radius: 20px; padding: 22px 20px 18px; box-shadow: 0 10px 30px rgba(16,42,67,.14); }
+  .rotulo { font: 700 11.5px Montserrat, sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--fg-2); margin: 0 0 6px; display: flex; align-items: center; gap: 8px; }
+  .rotulo.agora { color: #C93A2B; }
+  .rotulo.agora::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #E0452E; animation: pulso 1.6s ease-out infinite; }
+  @keyframes pulso { 0% { box-shadow: 0 0 0 0 rgba(224,69,46,.55); } 100% { box-shadow: 0 0 0 9px rgba(224,69,46,0); } }
+  .prox-quando { margin: 0; font: 800 30px/1.1 Montserrat, sans-serif; letter-spacing: -.015em; }
+  .prox-oque { margin: 4px 0 0; font-size: 15px; color: var(--fg-2); }
+  .prox-oque b { color: var(--fg); font-weight: 600; }
+
+  .semana { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; margin: 20px 0 0; padding: 0; list-style: none; }
+  .dia { appearance: none; border: 0; background: none; color: var(--fg); width: 100%; padding: 8px 0 9px; border-radius: 12px; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 4px; font: inherit; }
+  .dia .sigla { font: 700 11px Montserrat, sans-serif; letter-spacing: .04em; color: var(--fg-2); }
+  .dia .num { font: 800 17px/1 Montserrat, sans-serif; font-variant-numeric: tabular-nums; }
+  .dia .pontos { display: flex; gap: 3px; height: 6px; }
+  .dia .pontos i { width: 6px; height: 6px; border-radius: 50%; background: var(--ceu); }
+  .dia .pontos i.x { background: none; box-shadow: inset 0 0 0 1.5px var(--fg-2); opacity: .7; }
+  .dia.especial .pontos i:not(.x) { background: #F7931E; }
+  .dia.vazio .num { color: var(--fg-2); opacity: .55; }
+  .dia.hoje { background: var(--hoje); }
+  .dia[aria-pressed="true"] { background: var(--azul); color: var(--branco); }
+  .dia[aria-pressed="true"] .sigla, .dia[aria-pressed="true"] .num { color: var(--branco); opacity: 1; }
+  .dia[aria-pressed="true"] .pontos i { background: var(--branco); }
+  .dia:hover:not([aria-pressed="true"]) { background: var(--hoje); }
+
+  .eventos { list-style: none; margin: 12px 0 0; padding: 12px 2px 0; border-top: 1px solid var(--line); min-height: 52px; }
+  .eventos li { display: flex; gap: 14px; align-items: baseline; padding: 5px 0; font-size: 15px; }
+  .eventos .h { font: 700 15px Montserrat, sans-serif; min-width: 52px; font-variant-numeric: tabular-nums; }
+  .eventos .vazio { color: var(--fg-2); }
+  .eventos .nota { display: block; font-size: 13px; color: var(--fg-2); }
+  .eventos .cancelado .h, .eventos .cancelado .ev-nome { text-decoration: line-through; color: var(--fg-2); }
+  .eventos .cancelado .nota { color: #C93A2B; }
+
+  /* ---------- Links ---------- */
+  .links { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 10px; }
+  .links li, .par .link { min-width: 0; }
+  .link { display: flex; align-items: center; gap: 14px; padding: 14px 16px; min-height: 68px; border-radius: 16px; background: var(--card); border: 1px solid var(--line); text-decoration: none; transition: transform .15s ease, border-color .15s ease; }
+  .link:hover { border-color: var(--ceu); transform: translateY(-1px); }
+  .link .ic { flex: none; width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: var(--hoje); color: var(--ic); }
+  .link .ic svg { width: 22px; height: 22px; }
+  .link .tx { flex: 1; min-width: 0; }
+  .link .t { display: block; font: 700 16px Montserrat, sans-serif; }
+  .link .s { display: block; font-size: 13.5px; color: var(--fg-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .link .seta { flex: none; width: 18px; height: 18px; color: var(--fg-2); }
+  .link.principal { background: var(--azul); border-color: var(--azul); color: var(--branco); }
+  .link.principal .ic { background: var(--ceu); color: var(--preto); }
+  .link.principal .s, .link.principal .seta { color: rgba(255,255,255,.72); }
+  :root[data-theme="dark"] .link.principal, .link.principal { box-shadow: inset 0 0 0 1px rgba(79,184,207,.25); }
+  .par { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .par .link { min-height: 60px; }
+  .par .link .seta { display: none; }
+
+  /* ---------- Rodapé ---------- */
+  .versiculo { margin: 34px 4px 0; text-align: center; }
+  .versiculo p { margin: 0; font: italic 500 20px/1.45 Lora, Georgia, serif; }
+  .versiculo cite { display: block; margin-top: 8px; font: 700 11.5px Montserrat, sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--ceu); font-style: normal; }
+
+  @media (min-width: 640px) {
+    .topo { padding-top: 56px; }
+    .nome .ord { font-size: 76px; }
+    .nome .resto { font-size: 28px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topo">
+  <div class="topo-in">
+    {{FAIXAS}}
+    <div class="simbolo" aria-hidden="true">{{SIMBOLO}}</div>
+    <h1 class="nome"><span class="ord">2ª</span><span class="resto">Igreja Presbiteriana<br>Renovada de Sumaré</span></h1>
+    <p class="pastor">Pastor Osvaldo Cardoso Vieira</p>
+  </div>
+</header>
+
+<main>
+  <section class="agenda" aria-labelledby="prox-rotulo">
+    <p class="rotulo" id="prox-rotulo">Próximo encontro</p>
+    <p class="prox-quando" id="prox-quando">Domingo, 19h00</p>
+    <p class="prox-oque" id="prox-oque"><b>Culto</b></p>
+
+    <div class="semana" role="group" aria-label="Programação da semana" id="semana"></div>
+    <ul class="eventos" id="eventos" aria-live="polite"></ul>
+  </section>
+
+  <ul class="links">
+    <li><a class="link principal" href="https://chat.whatsapp.com/KiJwthx8bFxCRsELvdAXOh" target="_blank" rel="noopener">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.3Z"/></svg></span>
+      <span class="tx"><span class="t">Grupo de avisos</span><span class="s">Comunidade no WhatsApp</span></span>
+      <svg class="seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+    </a></li>
+    <li><a class="link" href="https://www.youtube.com/@iprsumare" target="_blank" rel="noopener">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8ZM9.8 15V9l5.8 3-5.8 3Z"/></svg></span>
+      <span class="tx"><span class="t">Cultos no YouTube</span><span class="s">Transmissões e mensagens</span></span>
+      <svg class="seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+    </a></li>
+    <li><a class="link" href="https://www.google.com/maps/search/?api=1&amp;query=R.+Ant%C3%B4nio+Denadai%2C+204%2C+Sumar%C3%A9+-+SP" target="_blank" rel="noopener">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
+      <span class="tx"><span class="t">Como chegar</span><span class="s">R. Antônio Denadai, 204</span></span>
+      <svg class="seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+    </a></li>
+    <li class="par">
+      <a class="link" href="https://www.instagram.com/iprsumare" target="_blank" rel="noopener">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
+        <span class="tx"><span class="t">Instagram</span><span class="s">@iprsumare</span></span>
+      </a>
+      <a class="link" href="https://www.facebook.com/IPRSumare" target="_blank" rel="noopener">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4a21 21 0 0 0-2.3-.1c-2.3 0-3.9 1.4-3.9 4v2.2H7.8v3h2.6V21h3.1Z"/></svg></span>
+        <span class="tx"><span class="t">Facebook</span><span class="s">IPRSumare</span></span>
+      </a>
+    </li>
+  </ul>
+
+  <blockquote class="versiculo">
+    <p>“Alegrei-me quando me disseram: Vamos à Casa do Senhor.”</p>
+    <cite>Salmo 122.1</cite>
+  </blockquote>
+
+</main>
+
+<script>
+  // A agenda vem da planilha "IPRS - Agenda de encontros" (Google Drive).
+  // Abas: "Programação fixa" (regra da semana) e "Exceções" (cancelar, alterar, adicionar).
+  const PLANILHA_ID = "1Sb7BKAkBvqL5-H2sVREhyWkXwik2UkBTRyJJOsXfEbA";
+  const ABA_FIXA = "Programação fixa", ABA_EXCECOES = "Exceções";
+
+  // Usada se a planilha não responder. 0 = domingo … 6 = sábado.
+  const FIXA_PADRAO = [
+    { dia: 0, hora: "09:00", nome: "Escola Bíblica Dominical", duracao: 75 },
+    { dia: 0, hora: "19:00", nome: "Culto", duracao: 120 },
+    { dia: 1, hora: "19:30", nome: "Estudo Bíblico", duracao: 90 },
+    { dia: 2, hora: "14:00", nome: "Tarde da Bênção", duracao: 120 },
+    { dia: 2, hora: "19:30", nome: "Culto", duracao: 120 },
+    { dia: 4, hora: "19:30", nome: "Culto", duracao: 120 },
+    { dia: 6, hora: "19:30", nome: "Culto", duracao: 120 },
+  ];
+  const DIAS = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
+  const SIGLAS = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
+  const DIAS_VISIVEIS = 7, DURACAO_EXTRA = 120;
+
+  let fixa = FIXA_PADRAO, excecoes = [];
+
+  // ---------- leitura da planilha ----------
+  function csv(texto) {
+    const linhas = []; let linha = [], campo = "", aspas = false;
+    for (let i = 0; i < texto.length; i++) {
+      const c = texto[i];
+      if (aspas) {
+        if (c === '"' && texto[i + 1] === '"') { campo += '"'; i++; }
+        else if (c === '"') aspas = false;
+        else campo += c;
+      } else if (c === '"') aspas = true;
+      else if (c === ",") { linha.push(campo); campo = ""; }
+      else if (c === "\n" || c === "\r") {
+        if (c === "\r" && texto[i + 1] === "\n") i++;
+        linha.push(campo); linhas.push(linha); linha = []; campo = "";
+      } else campo += c;
+    }
+    if (campo || linha.length) { linha.push(campo); linhas.push(linha); }
+    return linhas.map(l => l.map(v => v.trim()));
+  }
+  const semAcento = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().trim();
+  const lerDia = s => ["dom", "seg", "ter", "qua", "qui", "sex", "sab"].indexOf(semAcento(s).slice(0, 3));
+  function lerHora(s) {
+    const m = /^(\d{1,2})[:h](\d{2})/.exec((s || "").trim());
+    return m ? String(+m[1]).padStart(2, "0") + ":" + m[2] : null;
+  }
+  function lerData(s) { // "21/11/2026", "21/11/26" ou "2026-11-21" → número de dias (UTC)
+    s = (s || "").trim(); let d, m, a, r;
+    if ((r = /^(\d{1,2})\/(\d{1,2})\/(\d{2,4})/.exec(s))) [d, m, a] = [+r[1], +r[2], +r[3]];
+    else if ((r = /^(\d{4})-(\d{1,2})-(\d{1,2})/.exec(s))) [a, m, d] = [+r[1], +r[2], +r[3]];
+    else return null;
+    if (a < 100) a += 2000;
+    return Date.UTC(a, m - 1, d) / 864e5;
+  }
+  async function aba(nome) {
+    const url = `https://docs.google.com/spreadsheets/d/${PLANILHA_ID}/gviz/tq?tqx=out:csv&headers=1&sheet=${encodeURIComponent(nome)}`;
+    const r = await fetch(url, { cache: "no-store" });
+    if (!r.ok) throw new Error(nome + ": " + r.status);
+    const texto = await r.text();
+    if (texto.trim().startsWith("<")) throw new Error(nome + ": planilha não está compartilhada");
+    return csv(texto).slice(1);
+  }
+  async function carregar() {
+    const [linhasFixa, linhasExc] = await Promise.all([aba(ABA_FIXA), aba(ABA_EXCECOES)]);
+    const f = linhasFixa.map(([dia, hora, nome, dur]) => ({
+      dia: lerDia(dia || ""), hora: lerHora(hora), nome: nome || "", duracao: parseInt(dur, 10) || DURACAO_EXTRA,
+    })).filter(e => e.dia >= 0 && e.hora && e.nome);
+    const x = linhasExc.map(([data, ate, acao, hora, nome, novaHora, motivo]) => ({
+      de: lerData(data), ate: lerData(ate), acao: semAcento(acao || ""),
+      hora: lerHora(hora), nome: nome || "", novaHora: lerHora(novaHora), motivo: motivo || "",
+    })).filter(e => e.de !== null && ["cancelar", "alterar", "adicionar"].includes(e.acao));
+    if (f.length) fixa = f;
+    excecoes = x;
+    try { localStorage.setItem("agenda-iprs", JSON.stringify({ fixa, excecoes })); } catch (e) {}
+  }
+  try {
+    const salvo = JSON.parse(localStorage.getItem("agenda-iprs"));
+    if (salvo && salvo.fixa && salvo.fixa.length) { fixa = salvo.fixa; excecoes = salvo.excecoes || []; }
+  } catch (e) {}
+
+  // ---------- calendário ----------
+  // Hora atual em Sumaré, independente do fuso de quem abre a página
+  function agoraSP() {
+    const p = Object.fromEntries(new Intl.DateTimeFormat("en-US", {
+      timeZone: "America/Sao_Paulo", year: "numeric", month: "2-digit", day: "2-digit",
+      hour: "2-digit", minute: "2-digit", hourCycle: "h23",
+    }).formatToParts(new Date()).map(x => [x.type, x.value]));
+    return { hoje: Date.UTC(+p.year, +p.month - 1, +p.day) / 864e5, min: (+p.hour) * 60 + (+p.minute) };
+  }
+  const emMin = h => { const [a, b] = h.split(":").map(Number); return a * 60 + b; };
+  const fmtHora = h => h.replace(":", "h");
+  const diaSemana = n => new Date(n * 864e5).getUTCDay();
+  const diaMes = n => new Date(n * 864e5).getUTCDate();
+  const vale = (x, n) => n >= x.de && n <= (x.ate !== null && x.ate >= x.de ? x.ate : x.de);
+
+  function encontrosDoDia(n) {
+    const lista = fixa.filter(e => e.dia === diaSemana(n)).map(e => ({ ...e, n, cancelado: false, motivo: "" }));
+    for (const x of excecoes) {
+      if (!vale(x, n)) continue;
+      if (x.acao === "adicionar" && x.hora && x.nome) {
+        lista.push({ n, hora: x.hora, nome: x.nome, duracao: DURACAO_EXTRA, cancelado: false, motivo: x.motivo, especial: true });
+        continue;
+      }
+      const alvos = lista.filter(e => !e.especial && (!x.hora || e.hora === x.hora));
+      for (const e of alvos) {
+        if (x.acao === "cancelar") { e.cancelado = true; e.motivo = x.motivo; }
+        if (x.acao === "alterar") {
+          if (x.nome) e.nome = x.nome;
+          if (x.novaHora) e.hora = x.novaHora;
+          e.motivo = x.motivo; e.especial = true;
+        }
+      }
+    }
+    return lista.sort((a, b) => emMin(a.hora) - emMin(b.hora));
+  }
+
+  function proximo(agora) {
+    for (let k = 0; k < 60; k++) {
+      for (const e of encontrosDoDia(agora.hoje + k)) {
+        if (e.cancelado) continue;
+        const ini = k * 1440 + emMin(e.hora);
+        if (agora.min >= ini && agora.min < ini + e.duracao) return { e, agora: true, falta: 0, k };
+        if (ini > agora.min) return { e, agora: false, falta: ini - agora.min, k };
+      }
+    }
+    return null;
+  }
+
+  function quandoTexto(p) {
+    const hora = fmtHora(p.e.hora);
+    if (p.k === 0) return "Hoje, " + hora;
+    if (p.k === 1) return "Amanhã, " + hora;
+    if (p.k < 7) return DIAS[diaSemana(p.e.n)] + ", " + hora;
+    return `${diaMes(p.e.n)}/${String(new Date(p.e.n * 864e5).getUTCMonth() + 1).padStart(2, "0")}, ${hora}`;
+  }
+  function faltaTexto(min) {
+    if (min >= 720) return "";
+    const h = Math.floor(min / 60), m = min % 60;
+    if (h === 0) return " · em " + m + " min";
+    return " · em " + h + " h" + (m ? " " + m + " min" : "");
+  }
+  const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+  // ---------- tela ----------
+  const semanaEl = document.getElementById("semana");
+  const eventosEl = document.getElementById("eventos");
+  let selecionado = null;
+
+  function mostrarDia(n) {
+    selecionado = n;
+    semanaEl.querySelectorAll(".dia").forEach(b => b.setAttribute("aria-pressed", String(+b.dataset.n === n)));
+    const lista = encontrosDoDia(n);
+    eventosEl.innerHTML = lista.length
+      ? lista.map(e => `<li class="${e.cancelado ? "cancelado" : ""}"><span class="h">${fmtHora(e.hora)}</span>
+          <span><span class="ev-nome">${esc(e.nome)}</span>${e.cancelado ? `<span class="nota">Cancelado${e.motivo ? " · " + esc(e.motivo) : ""}</span>`
+            : e.motivo ? `<span class="nota">${esc(e.motivo)}</span>` : ""}</span></li>`).join("")
+      : `<li class="vazio">Sem programação ${diaSemana(n) === 0 || diaSemana(n) === 6 ? "no" : "na"} ${DIAS[diaSemana(n)].toLowerCase()}.</li>`;
+  }
+
+  function render() {
+    const agora = agoraSP();
+    const p = proximo(agora);
+    const rot = document.getElementById("prox-rotulo");
+    rot.textContent = p && p.agora ? "Acontecendo agora" : "Próximo encontro";
+    rot.classList.toggle("agora", !!(p && p.agora));
+    document.getElementById("prox-quando").textContent = !p ? "Em breve" : p.agora ? p.e.nome : quandoTexto(p);
+    document.getElementById("prox-oque").innerHTML = !p ? "" : p.agora
+      ? `Começou às ${fmtHora(p.e.hora)}`
+      : `<b>${esc(p.e.nome)}</b>${faltaTexto(p.falta)}`;
+
+    semanaEl.innerHTML = Array.from({ length: DIAS_VISIVEIS }, (_, k) => {
+      const n = agora.hoje + k, lista = encontrosDoDia(n);
+      const ativos = lista.filter(e => !e.cancelado).length;
+      const cls = ["dia", k === 0 ? "hoje" : "", ativos ? "" : "vazio", lista.some(e => e.especial && !e.cancelado) ? "especial" : ""].join(" ");
+      const label = `${k === 0 ? "Hoje" : DIAS[diaSemana(n)]}, dia ${diaMes(n)}: ${ativos ? ativos + (ativos > 1 ? " encontros" : " encontro") : "sem programação"}`;
+      return `<button type="button" class="${cls}" data-n="${n}" aria-pressed="false" aria-label="${label}">
+        <span class="sigla">${k === 0 ? "Hoje" : SIGLAS[diaSemana(n)]}</span><span class="num">${diaMes(n)}</span>
+        <span class="pontos">${lista.map(e => `<i class="${e.cancelado ? "x" : ""}"></i>`).join("")}</span></button>`;
+    }).join("");
+    semanaEl.querySelectorAll(".dia").forEach(b => b.addEventListener("click", () => mostrarDia(+b.dataset.n)));
+    mostrarDia(selecionado !== null && selecionado >= agora.hoje && selecionado < agora.hoje + DIAS_VISIVEIS ? selecionado : agora.hoje);
+  }
+
+  render();
+  carregar().then(render).catch(e => console.warn("Agenda: usando a programação salva.", e));
+  setInterval(render, 60 * 1000);
+</script>
+</body>
+</html>
