@@ -35,4 +35,16 @@ python3 -m venv .venv && .venv/bin/pip install -r ferramentas/requirements.txt
 .venv/bin/python ferramentas/build_logo.py    # só se mudar o desenho do logo
 ```
 
+## Publicar a página de links (Hostinger)
+
+A página fica em **https://iprsumare.com.br/links/**, como uma pasta comum ao lado do WordPress. Não precisa importar nada no WordPress.
+
+1. Gere o pacote: `./ferramentas/empacotar_links.sh` → `dist/links.zip`
+2. hPanel → Arquivos → Gerenciador de arquivos → `public_html`
+3. Envie o `links.zip` e use **Extrair** ali mesmo. O resultado deve ser `public_html/links/index.html`.
+4. Para atualizar depois, repita, sobrescrevendo os arquivos.
+
+Não crie no WordPress uma página com o endereço `links`, para não disputar o mesmo endereço.
+Para mudar o endereço, edite `URL` em `ferramentas/build_links.py`.
+
 Créditos: Montserrat (SIL Open Font License, ver `ferramentas/OFL-Montserrat.txt`) e mapa Natural Earth (domínio público).
