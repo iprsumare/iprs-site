@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Identidade Visual IPRS</title>
-<link rel="icon" type="image/svg+xml" href="{{IMG:iprs-simbolo-azul.svg}}">
+<link rel="icon" type="image/svg+xml" href="{{FAVICON}}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Inter:wght@400;500;600&family=Lora:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
 <style>
@@ -105,13 +105,9 @@
   /* Links */
   .links-card { display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center; background: var(--azul-renovado); color: #fff; border-radius: 16px; padding: 28px; }
   .links-card p { margin: 6px 0 0; color: rgba(255,255,255,.75); }
+  .links-card .qr a { color: #fff; }
   .btn { display: inline-flex; align-items: center; gap: 8px; background: var(--azul-ceu); color: var(--preto); font: 700 15px Montserrat; padding: 12px 18px; border-radius: 10px; text-decoration: none; white-space: nowrap; }
 
-  .findings { display: grid; gap: 12px; }
-  .f { background: var(--bg-soft); border-radius: 12px; padding: 16px 18px; border-left: 4px solid var(--azul-ceu); }
-  .f b { font-family: Montserrat; }
-  .f.warn { border-left-color: var(--chama); }
-  .f.ok { border-left-color: var(--ok); }
   footer { padding: 40px 0 56px; color: var(--fg-muted); font-size: 13px; border-top: 1px solid var(--line); }
 
   @media (max-width: 640px) {
@@ -124,7 +120,7 @@
 
 <header class="hero">
   <div class="wrap hero-grid">
-    <img src="{{IMG:iprs-simbolo-cor-negativo.svg}}" alt="Símbolo da 2ª IPR Sumaré">
+    <img data-img="iprs-simbolo-cor-negativo" alt="Símbolo da 2ª IPR Sumaré">
     <div>
       <span class="tag">Guia de identidade · v1</span>
       <h1>2ª Igreja Presbiteriana<br>Renovada de Sumaré</h1>
@@ -138,14 +134,14 @@
 <section>
   <h2>Logo</h2>
   <h3>Versões oficiais, em vetor</h3>
-  <p class="lead">Redesenho vetorial do logo: monograma reconstruído com a geometria do logo oficial da IPRB, texto em Montserrat convertido em curvas e um globo de verdade, centrado em Sumaré. Use sempre os arquivos da pasta <code>logo/</code> — SVG para gráfica e web, PNG para redes e apresentações.</p>
+  <p class="lead">Redesenho vetorial do logo: monograma reconstruído com a geometria do logo oficial da IPRB, texto em Montserrat convertido em curvas e um globo de verdade, centrado em Sumaré. Use sempre estes arquivos: SVG para gráfica e web, PNG para redes e apresentações.</p>
   <div class="versoes">
-    <div class="versao"><div class="box claro"><img src="{{IMG:iprs-logo-cor.svg}}" alt=""></div><b>Colorido</b><span>Padrão em fundos claros.</span><span class="dl"><a href="logo/iprs-logo-cor.svg">SVG</a> · <a href="logo/png/iprs-logo-cor.png">PNG</a></span></div>
-    <div class="versao"><div class="box azul"><img src="{{IMG:iprs-logo-cor-negativo.svg}}" alt=""></div><b>Colorido negativo</b><span>Fundos Azul Renovado, preto e fotos escuras.</span><span class="dl"><a href="logo/iprs-logo-cor-negativo.svg">SVG</a> · <a href="logo/png/iprs-logo-cor-negativo.png">PNG</a></span></div>
-    <div class="versao"><div class="box claro"><img src="{{IMG:iprs-logo-preto.svg}}" alt=""></div><b>Uma cor · preto</b><span>Carimbo, xerox, gravação, impressão 1 cor.</span><span class="dl"><a href="logo/iprs-logo-preto.svg">SVG</a> · <a href="logo/png/iprs-logo-preto.png">PNG</a></span></div>
-    <div class="versao"><div class="box preto"><img src="{{IMG:iprs-logo-branco.svg}}" alt=""></div><b>Uma cor · branco</b><span>Camiseta escura, vinil, projeção.</span><span class="dl"><a href="logo/iprs-logo-branco.svg">SVG</a> · <a href="logo/png/iprs-logo-branco.png">PNG</a></span></div>
-    <div class="versao"><div class="box nevoa"><img src="{{IMG:iprs-logo-azul.svg}}" alt=""></div><b>Uma cor · Azul Renovado</b><span>Papelaria e peças institucionais.</span><span class="dl"><a href="logo/iprs-logo-azul.svg">SVG</a> · <a href="logo/png/iprs-logo-azul.png">PNG</a></span></div>
-    <div class="versao"><div class="box claro"><img src="{{IMG:iprs-simbolo-cor.svg}}" alt=""></div><b>Símbolo</b><span>Sem o texto: avatar, favicon, selo, espaços pequenos.</span><span class="dl"><a href="logo/iprs-simbolo-cor.svg">SVG</a> · <a href="logo/png/iprs-simbolo-cor.png">PNG</a> · <a href="logo/png/avatar-instagram.png">Avatar</a></span></div>
+    <div class="versao"><div class="box claro"><img data-img="iprs-logo-cor" alt=""></div><b>Colorido</b><span>Padrão em fundos claros.</span><span class="dl"><a href="#" data-baixar="iprs-logo-cor" data-formato="svg">SVG</a> · <a href="#" data-baixar="iprs-logo-cor" data-formato="png">PNG</a></span></div>
+    <div class="versao"><div class="box azul"><img data-img="iprs-logo-cor-negativo" alt=""></div><b>Colorido negativo</b><span>Fundos Azul Renovado, preto e fotos escuras.</span><span class="dl"><a href="#" data-baixar="iprs-logo-cor-negativo" data-formato="svg">SVG</a> · <a href="#" data-baixar="iprs-logo-cor-negativo" data-formato="png">PNG</a></span></div>
+    <div class="versao"><div class="box claro"><img data-img="iprs-logo-preto" alt=""></div><b>Uma cor · preto</b><span>Carimbo, xerox, gravação, impressão 1 cor.</span><span class="dl"><a href="#" data-baixar="iprs-logo-preto" data-formato="svg">SVG</a> · <a href="#" data-baixar="iprs-logo-preto" data-formato="png">PNG</a></span></div>
+    <div class="versao"><div class="box preto"><img data-img="iprs-logo-branco" alt=""></div><b>Uma cor · branco</b><span>Camiseta escura, vinil, projeção.</span><span class="dl"><a href="#" data-baixar="iprs-logo-branco" data-formato="svg">SVG</a> · <a href="#" data-baixar="iprs-logo-branco" data-formato="png">PNG</a></span></div>
+    <div class="versao"><div class="box nevoa"><img data-img="iprs-logo-azul" alt=""></div><b>Uma cor · Azul Renovado</b><span>Papelaria e peças institucionais.</span><span class="dl"><a href="#" data-baixar="iprs-logo-azul" data-formato="svg">SVG</a> · <a href="#" data-baixar="iprs-logo-azul" data-formato="png">PNG</a></span></div>
+    <div class="versao"><div class="box claro"><img data-img="iprs-simbolo-cor" alt=""></div><b>Símbolo</b><span>Sem o texto: avatar, favicon, selo, espaços pequenos.</span><span class="dl"><a href="#" data-baixar="iprs-simbolo-cor" data-formato="svg">SVG</a> · <a href="#" data-baixar="iprs-simbolo-cor" data-formato="png">PNG</a> · <a href="#" data-baixar="avatar" data-formato="png">Avatar</a></span></div>
   </div>
 </section>
 
@@ -156,7 +152,7 @@
     <div class="regra">
       <div class="amostra"><svg viewBox="-60 -60 440 415" aria-hidden="true">
         <rect x="-41" y="-41" width="402" height="377" fill="none" stroke="#4FB8CF" stroke-width="2" stroke-dasharray="7 6"/>
-        <image href="{{IMG:iprs-logo-cor.svg}}" x="0" y="11" width="320" height="295" transform="translate(0,-11)"/>
+        <image data-img="iprs-logo-cor" x="0" y="11" width="320" height="295" transform="translate(0,-11)"/>
         <rect x="-41" y="120" width="41" height="20" fill="#4FB8CF" opacity=".35"/>
         <text x="-20.5" y="134" text-anchor="middle" font-family="Montserrat" font-weight="700" font-size="13" fill="#102A43">2x</text>
         <rect x="320" y="120" width="41" height="20" fill="#4FB8CF" opacity=".35"/>
@@ -167,8 +163,8 @@
     </div>
     <div class="regra">
       <div class="amostra"><div class="tamanhos">
-        <figure><img src="{{IMG:iprs-logo-cor.svg}}" width="120" alt="">Logo completo<br><b>mín. 4 cm · 200 px</b></figure>
-        <figure><img src="{{IMG:iprs-simbolo-cor.svg}}" width="40" alt="">Símbolo<br><b>mín. 1 cm · 32 px</b></figure>
+        <figure><img data-img="iprs-logo-cor" width="120" alt="">Logo completo<br><b>mín. 4 cm · 200 px</b></figure>
+        <figure><img data-img="iprs-simbolo-cor" width="40" alt="">Símbolo<br><b>mín. 1 cm · 32 px</b></figure>
       </div></div>
       <h4>Tamanho mínimo</h4>
       <p>Abaixo de 4 cm (ou 200 px de largura) o texto em volta fica ilegível: use só o símbolo. Na tela de projeção, o logo completo deve ocupar pelo menos 1/6 da altura.</p>
@@ -187,12 +183,12 @@
 
   <h4 style="margin-top:36px;margin-bottom:14px">Não faça</h4>
   <div class="naofazer">
-    <div class="nf"><div class="box"><img src="{{IMG:iprs-logo-cor.svg}}" style="transform:scaleX(1.35)" alt=""></div><p>Esticar ou achatar</p></div>
-    <div class="nf"><div class="box"><img src="{{IMG:iprs-logo-cor.svg}}" style="filter:hue-rotate(150deg) saturate(1.6)" alt=""></div><p>Trocar as cores</p></div>
-    <div class="nf"><div class="box"><img src="{{IMG:iprs-logo-cor.svg}}" style="transform:rotate(-18deg)" alt=""></div><p>Girar</p></div>
-    <div class="nf"><div class="box"><img src="{{IMG:iprs-logo-cor.svg}}" style="filter:drop-shadow(6px 8px 4px rgba(0,0,0,.55)) blur(.4px)" alt=""></div><p>Sombra, brilho ou contorno</p></div>
-    <div class="nf"><div class="box" style="background:repeating-linear-gradient(45deg,#4FB8CF 0 14px,#F7931E 14px 28px,#102A43 28px 42px)"><img src="{{IMG:iprs-logo-cor.svg}}" alt=""></div><p>Fundo sem contraste</p></div>
-    <div class="nf"><div class="box"><img src="{{IMG:old-logo.png}}" style="width:60%;image-rendering:pixelated;filter:blur(1.2px)" alt=""></div><p>Usar o PNG antigo de 320 px</p></div>
+    <div class="nf"><div class="box"><img data-img="iprs-logo-cor" style="transform:scaleX(1.35)" alt=""></div><p>Esticar ou achatar</p></div>
+    <div class="nf"><div class="box"><img data-img="iprs-logo-cor" style="filter:hue-rotate(150deg) saturate(1.6)" alt=""></div><p>Trocar as cores</p></div>
+    <div class="nf"><div class="box"><img data-img="iprs-logo-cor" style="transform:rotate(-18deg)" alt=""></div><p>Girar</p></div>
+    <div class="nf"><div class="box"><img data-img="iprs-logo-cor" style="filter:drop-shadow(6px 8px 4px rgba(0,0,0,.55)) blur(.4px)" alt=""></div><p>Sombra, brilho ou contorno</p></div>
+    <div class="nf"><div class="box" style="background:repeating-linear-gradient(45deg,#4FB8CF 0 14px,#F7931E 14px 28px,#102A43 28px 42px)"><img data-img="iprs-logo-cor" alt=""></div><p>Fundo sem contraste</p></div>
+    <div class="nf"><div class="box"><img data-img="antigo" style="width:60%;image-rendering:pixelated;filter:blur(1.2px)" alt=""></div><p>Usar o PNG antigo de 320 px</p></div>
   </div>
 </section>
 
@@ -239,17 +235,17 @@
   <h3>Como fica num post</h3>
   <div class="mock">
     <div class="post" style="background:#102A43;color:#fff">
-      <div class="top"><span class="k" style="color:#4FB8CF">Programação</span><img src="{{IMG:iprs-simbolo-branco.svg}}" alt=""></div>
+      <div class="top"><span class="k" style="color:#4FB8CF">Programação</span><img data-img="iprs-simbolo-branco" alt=""></div>
       <span class="t">Culto de<br>Santa Ceia</span>
       <span class="d">Domingo · 19h00<br><span style="color:rgba(255,255,255,.7)">2ª IPR Sumaré</span></span>
     </div>
     <div class="post" style="background:#FFFFFF;color:#0B0D10;border:1px solid #D5DEE6">
-      <div class="top"><span class="k" style="color:#102A43">Pra meditar</span><img src="{{IMG:iprs-simbolo-azul.svg}}" alt=""></div>
+      <div class="top"><span class="k" style="color:#102A43">Pra meditar</span><img data-img="iprs-simbolo-azul" alt=""></div>
       <span class="s-lora" style="font-size:22px">“O Senhor é o meu pastor; nada me faltará.”<small>Salmo 23.1</small></span>
       <span class="d" style="color:#5D6B79">@iprsumare</span>
     </div>
     <div class="post" style="background:#0B0D10;color:#fff">
-      <div class="top"><span class="k" style="color:#4FB8CF">Jovens</span><img src="{{IMG:iprs-simbolo-cor-negativo.svg}}" alt=""></div>
+      <div class="top"><span class="k" style="color:#4FB8CF">Jovens</span><img data-img="iprs-simbolo-cor-negativo" alt=""></div>
       <span class="t">Culto de<br>Jovens</span>
       <span class="d">Sábado · 19h30</span>
     </div>
@@ -262,26 +258,19 @@
   <div class="links-card">
     <div>
       <h4>Horários com o próximo encontro em destaque, avisos, YouTube e como chegar</h4>
-      <p>Arquivo único em <code>links/index.html</code>. A agenda vem da planilha <a href="https://docs.google.com/spreadsheets/d/1Sb7BKAkBvqL5-H2sVREhyWkXwik2UkBTRyJJOsXfEbA/edit">IPRS - Agenda de encontros</a>: programação fixa + exceções (cancelar, alterar, adicionar).</p>
+      <p>Endereço: iprsumare.com.br/links. A agenda vem da planilha IPRS - Agenda de encontros: programação fixa + exceções (cancelar, alterar, adicionar).</p>
+      <p class="qr">QR code: <a href="#" data-baixar="qrcode-links" data-formato="svg">SVG</a> · <a href="#" data-baixar="qrcode-links" data-formato="png">PNG</a></p>
     </div>
-    <a class="btn" href="links/index.html">Abrir página →</a>
-  </div>
-</section>
-
-<section>
-  <h2>Pendências</h2>
-  <h3>O que falta acertar</h3>
-  <div class="findings">
-    <div class="f ok"><b>Logo em vetor</b> — resolvido nesta versão (pasta <code>logo/</code>).</div>
-    <div class="f warn"><b>Bairro do endereço.</b> O Facebook diz Jd. das Palmeiras e o Linktree diz Jardim Puch. Qual é o oficial?</div>
-    <div class="f warn"><b>Nome no Facebook.</b> Trocar “2º … de Sumare-SP” por “2ª Igreja Presbiteriana Renovada de Sumaré”.</div>
-    <div class="f warn"><b>Destaques do Instagram</b> em azul royal. Refazer os ícones em Azul Renovado + Azul Céu.</div>
-    <div class="f"><b>Linktree “iprsumaree”.</b> Será aposentado quando a página de links estiver no ar.</div>
-    <div class="f"><b>E-mail @hotmail.</b> Quando houver domínio próprio, criar um contato@.</div>
+    <a class="btn" href="https://iprsumare.com.br/links/">Abrir página →</a>
   </div>
 </section>
 
 </main>
 <footer><div class="wrap">Guia de identidade v1 · out/2026</div></footer>
+
+{{ATIVOS}}
+<script>
+{{SCRIPT}}
+</script>
 </body>
 </html>

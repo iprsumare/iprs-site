@@ -5,6 +5,7 @@ Identidade visual e páginas públicas da 2ª IPR Sumaré, igreja local da Igrej
 | Caminho | O que é |
 |---|---|
 | `index.html` | Guia de identidade visual: logo, regras de uso, paleta, tipografia |
+| `guia-wordpress.html` | O mesmo guia, para colar no WordPress |
 | `links/index.html` | Página de links (substitui o Linktree) com a agenda da semana |
 | `logo/` | Logo em SVG (vetor) e `logo/png/` em alta resolução |
 | `logo/legado/` | Logos originais em PNG, usados como referência no redesenho |
@@ -32,7 +33,7 @@ As páginas publicadas (`index.html` e `links/index.html`) são geradas. Edite o
 ```bash
 python3 -m venv .venv && .venv/bin/pip install -r ferramentas/requirements.txt
 .venv/bin/python ferramentas/build_links.py   # links/template.html → links/index.html
-.venv/bin/python ferramentas/build_guia.py    # guia.template.html → index.html
+.venv/bin/python ferramentas/build_guia.py    # guia.template.html → index.html e guia-wordpress.html
 .venv/bin/python ferramentas/build_logo.py    # só se mudar o desenho do logo
 ```
 
@@ -49,6 +50,16 @@ O build gera `links/wordpress.html`, que vai inteiro num bloco **HTML personaliz
 3. Painel lateral → Modelo: **Em branco** → Atualizar.
 
 **Prévia no WhatsApp e ícone:** envie `links/compartilhar.png` como Imagem destacada da página e `links/icone-site-512.png` em Configurações/Identidade do site → Ícone do site.
+
+## Publicar o guia (WordPress)
+
+Mesmo processo da página de links, numa página própria (sugestão: `identidade-visual`, modelo **Em branco**):
+
+```bash
+.venv/bin/python ferramentas/build_guia.py && LANG=en_US.UTF-8 pbcopy < guia-wordpress.html
+```
+
+Os logos vão embutidos uma vez só (colorido e uma cor); as outras versões e os downloads em SVG e PNG são gerados no navegador. As conversões para o WordPress ficam em `ferramentas/wordpress.py`, usado pelas duas páginas.
 
 Para mudar o endereço, edite `URL` em `ferramentas/build_links.py` e em `ferramentas/gerar_qrcode.py` (e rode `.venv/bin/python ferramentas/gerar_qrcode.py`).
 

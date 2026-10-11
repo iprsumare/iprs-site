@@ -22,64 +22,9 @@ open(os.path.join(D, "index.html"), "w", encoding="utf-8").write(html)
 print("index.html", len(html))
 
 # ---------- Versão para WordPress (bloco "HTML personalizado") ----------
-# A página vai dentro de um Shadow DOM: o tema do WordPress não altera o visual dela,
-# e o CSS dela não vaza para o resto do site.
-estilo = re.search(r"<style>(.*?)</style>", html, re.S).group(1)
-corpo = re.search(r"<body>(.*?)<script>", html, re.S).group(1).strip()
-codigo = re.search(r"<script>(.*?)</script>", html, re.S).group(1)
-fontes = re.search(r'<link href="https://fonts.googleapis.com/css2[^>]*>', html).group(0)
-
-for a, b in [(':root[data-theme="dark"]', ':host([data-theme="dark"])'),
-             (':root:not([data-theme="light"])', ':host(:not([data-theme="light"]))'),
-             (":root", ":host"), ("  html { -webkit-text-size-adjust: 100%; }\n", ""), ("  body {", "  .pagina {")]:
-    assert a in estilo, a
-    estilo = estilo.replace(a, b)
-assert "document.getElementById" in codigo
-codigo = codigo.replace("document.getElementById", "raiz.getElementById")
-# O WordPress troca "&" por "&#038;" dentro de <script> ao salvar, o que quebra o código.
-# Por isso o script vai codificado em base64 (sem "&", aspas ou "<").
-codigo_b64 = base64.b64encode(codigo.encode("utf-8")).decode()
-
-wp = f"""<!-- 2a IPR Sumare - pagina de links. Gerado por ferramentas/build_links.py - nao edite aqui. -->
-{fontes}
-<style>
-  #iprs-links {{ width: 100vw; max-width: none !important; margin: 0 0 0 calc(50% - 50vw) !important; padding: 0 !important; min-height: 100vh; background: #F3F6F9; }}
-  @media (prefers-color-scheme: dark) {{ #iprs-links {{ background: #0B141E; }} }}
-  body {{ overflow-x: clip; }}
-  /* tira os respiros do tema só nesta página */
-  body:has(#iprs-links) {{ background: #F3F6F9; }}
-  @media (prefers-color-scheme: dark) {{ body:has(#iprs-links) {{ background: #0B141E; }} }}
-  body:has(#iprs-links) .wp-site-blocks {{ padding-top: 0 !important; padding-bottom: 0 !important; }}
-  body:has(#iprs-links) .wp-site-blocks main > * {{ margin-block-start: 0 !important; }}
-  body:has(#iprs-links) .wp-site-blocks main > .wp-block-group:empty {{ display: none; }}
-  .wp-block-post-content:has(#iprs-links) > * {{ margin-block-start: 0 !important; }}
-</style>
-<div id="iprs-links"></div>
-<template id="iprs-links-modelo"><style>{estilo}</style><div class="pagina">{corpo}</div></template>
-<script>
-(function () {{
-  const host = document.getElementById("iprs-links");
-  if (host.shadowRoot) return;
-  const raiz = host.attachShadow({{ mode: "open" }});
-  raiz.appendChild(document.getElementById("iprs-links-modelo").content.cloneNode(true));
-  const bytes = Uint8Array.from(atob("{codigo_b64}"), c => c.charCodeAt(0));
-  new Function("raiz", new TextDecoder().decode(bytes))(raiz);
-}})();
-</script>
-"""
-# Acentos e símbolos viram códigos (&#233; no HTML, \e9 no CSS): assim o texto não se
-# deforma se a cópia ou o WordPress usarem outra codificação. O arquivo final é só ASCII.
-def ascii_seguro(texto):
-    partes = re.split(r"(<style>.*?</style>)", texto, flags=re.S)
-    saida = []
-    for parte in partes:
-        if parte.startswith("<style>"):
-            saida.append(re.sub(r"[^\x00-\x7f]", lambda m: "\\%x " % ord(m.group(0)), parte))
-        else:
-            saida.append(re.sub(r"[^\x00-\x7f]", lambda m: "&#%d;" % ord(m.group(0)), parte))
-    return "".join(saida)
-
-wp = ascii_seguro(wp)
-assert wp.isascii()
+import sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from wordpress import para_wordpress
+wp = para_wordpress(html, "iprs-links", "2a IPR Sumare - pagina de links", "#F3F6F9", "#0B141E")
 open(os.path.join(D, "wordpress.html"), "w", encoding="utf-8").write(wp)
 print("wordpress.html", len(wp))
