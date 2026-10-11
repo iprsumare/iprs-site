@@ -40,12 +40,19 @@ codigo = codigo.replace("document.getElementById", "raiz.getElementById")
 # Por isso o script vai codificado em base64 (sem "&", aspas ou "<").
 codigo_b64 = base64.b64encode(codigo.encode("utf-8")).decode()
 
-wp = f"""<!-- 2ª IPR Sumaré · página de links. Gerado por ferramentas/build_links.py — não edite aqui. -->
+wp = f"""<!-- 2a IPR Sumare - pagina de links. Gerado por ferramentas/build_links.py - nao edite aqui. -->
 {fontes}
 <style>
   #iprs-links {{ width: 100vw; max-width: none !important; margin: 0 0 0 calc(50% - 50vw) !important; padding: 0 !important; min-height: 100vh; background: #F3F6F9; }}
   @media (prefers-color-scheme: dark) {{ #iprs-links {{ background: #0B141E; }} }}
   body {{ overflow-x: clip; }}
+  /* tira os respiros do tema só nesta página */
+  body:has(#iprs-links) {{ background: #F3F6F9; }}
+  @media (prefers-color-scheme: dark) {{ body:has(#iprs-links) {{ background: #0B141E; }} }}
+  body:has(#iprs-links) .wp-site-blocks {{ padding-top: 0 !important; padding-bottom: 0 !important; }}
+  body:has(#iprs-links) .wp-site-blocks main > * {{ margin-block-start: 0 !important; }}
+  body:has(#iprs-links) .wp-site-blocks main > .wp-block-group:empty {{ display: none; }}
+  .wp-block-post-content:has(#iprs-links) > * {{ margin-block-start: 0 !important; }}
 </style>
 <div id="iprs-links"></div>
 <template id="iprs-links-modelo"><style>{estilo}</style><div class="pagina">{corpo}</div></template>
@@ -60,5 +67,19 @@ wp = f"""<!-- 2ª IPR Sumaré · página de links. Gerado por ferramentas/build_
 }})();
 </script>
 """
+# Acentos e símbolos viram códigos (&#233; no HTML, \e9 no CSS): assim o texto não se
+# deforma se a cópia ou o WordPress usarem outra codificação. O arquivo final é só ASCII.
+def ascii_seguro(texto):
+    partes = re.split(r"(<style>.*?</style>)", texto, flags=re.S)
+    saida = []
+    for parte in partes:
+        if parte.startswith("<style>"):
+            saida.append(re.sub(r"[^\x00-\x7f]", lambda m: "\\%x " % ord(m.group(0)), parte))
+        else:
+            saida.append(re.sub(r"[^\x00-\x7f]", lambda m: "&#%d;" % ord(m.group(0)), parte))
+    return "".join(saida)
+
+wp = ascii_seguro(wp)
+assert wp.isascii()
 open(os.path.join(D, "wordpress.html"), "w", encoding="utf-8").write(wp)
 print("wordpress.html", len(wp))

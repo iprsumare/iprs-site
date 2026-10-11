@@ -43,7 +43,7 @@ O build gera `links/wordpress.html`, que vai inteiro num bloco **HTML personaliz
 **Uma vez só — modelo em branco:** Aparência → Editor → Modelos → Adicionar modelo → *Modelo personalizado* "Em branco", com apenas o bloco **Conteúdo** (sem cabeçalho, rodapé nem título).
 
 **Publicar ou atualizar:**
-1. `.venv/bin/python ferramentas/build_links.py && pbcopy < links/wordpress.html` (copia o código)
+1. `.venv/bin/python ferramentas/build_links.py && LANG=en_US.UTF-8 pbcopy < links/wordpress.html` (copia o código)
 2. WordPress → Páginas → Link Tree (endereço `links`) → apague o conteúdo → bloco **HTML personalizado** → cole.
 3. Painel lateral → Modelo: **Em branco** → Atualizar.
 
