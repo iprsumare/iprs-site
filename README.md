@@ -64,3 +64,7 @@ Os logos vão embutidos uma vez só (colorido e uma cor); as outras versões e o
 Para mudar o endereço, edite `URL` em `ferramentas/build_links.py` e em `ferramentas/gerar_qrcode.py` (e rode `.venv/bin/python ferramentas/gerar_qrcode.py`).
 
 Créditos: Montserrat (SIL Open Font License, ver `ferramentas/OFL-Montserrat.txt`) e mapa Natural Earth (domínio público).
+
+## Guia publicado (GitHub Pages)
+
+**https://iprsumare.github.io/iprs-site/**: atualiza sozinho a cada `push` na `main` que mude o guia, os logos ou os QR codes (`.github/workflows/pages.yml`). Só vão para o site `index.html`, `logo/` (sem o legado) e `qrcode/`.
