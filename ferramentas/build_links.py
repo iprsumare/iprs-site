@@ -36,6 +36,9 @@ for a, b in [(':root[data-theme="dark"]', ':host([data-theme="dark"])'),
     estilo = estilo.replace(a, b)
 assert "document.getElementById" in codigo
 codigo = codigo.replace("document.getElementById", "raiz.getElementById")
+# O WordPress troca "&" por "&#038;" dentro de <script> ao salvar, o que quebra o código.
+# Por isso o script vai codificado em base64 (sem "&", aspas ou "<").
+codigo_b64 = base64.b64encode(codigo.encode("utf-8")).decode()
 
 wp = f"""<!-- 2ª IPR Sumaré · página de links. Gerado por ferramentas/build_links.py — não edite aqui. -->
 {fontes}
@@ -49,9 +52,11 @@ wp = f"""<!-- 2ª IPR Sumaré · página de links. Gerado por ferramentas/build_
 <script>
 (function () {{
   const host = document.getElementById("iprs-links");
-  const raiz = host.shadowRoot || host.attachShadow({{ mode: "open" }});
+  if (host.shadowRoot) return;
+  const raiz = host.attachShadow({{ mode: "open" }});
   raiz.appendChild(document.getElementById("iprs-links-modelo").content.cloneNode(true));
-{codigo}
+  const bytes = Uint8Array.from(atob("{codigo_b64}"), c => c.charCodeAt(0));
+  new Function("raiz", new TextDecoder().decode(bytes))(raiz);
 }})();
 </script>
 """
