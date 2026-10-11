@@ -8,7 +8,8 @@ Identidade visual e páginas públicas da 2ª IPR Sumaré, igreja local da Igrej
 | `links/index.html` | Página de links (substitui o Linktree) com a agenda da semana |
 | `logo/` | Logo em SVG (vetor) e `logo/png/` em alta resolução |
 | `logo/legado/` | Logos originais em PNG, usados como referência no redesenho |
-| `ferramentas/` | Scripts que geram o logo e as páginas |
+| `qrcode/` | QR codes para `iprsumare.com.br/links` (SVG, PNG, com logo e cartaz) |
+| `ferramentas/` | Scripts que geram o logo, as páginas e os QR codes |
 
 ## Identidade
 
@@ -49,6 +50,6 @@ O build gera `links/wordpress.html`, que vai inteiro num bloco **HTML personaliz
 
 **Prévia no WhatsApp e ícone:** envie `links/compartilhar.png` como Imagem destacada da página e `links/icone-site-512.png` em Configurações/Identidade do site → Ícone do site.
 
-Para mudar o endereço, edite `URL` em `ferramentas/build_links.py`.
+Para mudar o endereço, edite `URL` em `ferramentas/build_links.py` e em `ferramentas/gerar_qrcode.py` (e rode `.venv/bin/python ferramentas/gerar_qrcode.py`).
 
 Créditos: Montserrat (SIL Open Font License, ver `ferramentas/OFL-Montserrat.txt`) e mapa Natural Earth (domínio público).

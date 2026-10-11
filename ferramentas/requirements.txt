@@ -3,3 +3,5 @@ numpy
 scipy
 scikit-image
 fonttools
+segno
+opencv-python-headless
