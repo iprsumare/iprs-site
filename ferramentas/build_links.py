@@ -1,4 +1,5 @@
-"""Monta links/index.html (arquivo único, pronto para hospedar) a partir de template.html e dos SVGs do logo."""
+"""Monta links/index.html (página completa) e links/wordpress.html (para colar num bloco HTML personalizado do WordPress)
+a partir de template.html e dos SVGs do logo."""
 import base64, os, re
 RAIZ = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 D = os.path.join(RAIZ, "links")
@@ -19,3 +20,40 @@ html = read(os.path.join(D, "template.html"))
 html = html.replace("{{URL}}", URL).replace("{{SIMBOLO}}", simbolo).replace("{{FAVICON}}", favicon).replace("{{FAIXAS}}", faixas)
 open(os.path.join(D, "index.html"), "w", encoding="utf-8").write(html)
 print("index.html", len(html))
+
+# ---------- Versão para WordPress (bloco "HTML personalizado") ----------
+# A página vai dentro de um Shadow DOM: o tema do WordPress não altera o visual dela,
+# e o CSS dela não vaza para o resto do site.
+estilo = re.search(r"<style>(.*?)</style>", html, re.S).group(1)
+corpo = re.search(r"<body>(.*?)<script>", html, re.S).group(1).strip()
+codigo = re.search(r"<script>(.*?)</script>", html, re.S).group(1)
+fontes = re.search(r'<link href="https://fonts.googleapis.com/css2[^>]*>', html).group(0)
+
+for a, b in [(':root[data-theme="dark"]', ':host([data-theme="dark"])'),
+             (':root:not([data-theme="light"])', ':host(:not([data-theme="light"]))'),
+             (":root", ":host"), ("  html { -webkit-text-size-adjust: 100%; }\n", ""), ("  body {", "  .pagina {")]:
+    assert a in estilo, a
+    estilo = estilo.replace(a, b)
+assert "document.getElementById" in codigo
+codigo = codigo.replace("document.getElementById", "raiz.getElementById")
+
+wp = f"""<!-- 2ª IPR Sumaré · página de links. Gerado por ferramentas/build_links.py — não edite aqui. -->
+{fontes}
+<style>
+  #iprs-links {{ width: 100vw; max-width: none !important; margin: 0 0 0 calc(50% - 50vw) !important; padding: 0 !important; min-height: 100vh; background: #F3F6F9; }}
+  @media (prefers-color-scheme: dark) {{ #iprs-links {{ background: #0B141E; }} }}
+  body {{ overflow-x: clip; }}
+</style>
+<div id="iprs-links"></div>
+<template id="iprs-links-modelo"><style>{estilo}</style><div class="pagina">{corpo}</div></template>
+<script>
+(function () {{
+  const host = document.getElementById("iprs-links");
+  const raiz = host.shadowRoot || host.attachShadow({{ mode: "open" }});
+  raiz.appendChild(document.getElementById("iprs-links-modelo").content.cloneNode(true));
+{codigo}
+}})();
+</script>
+"""
+open(os.path.join(D, "wordpress.html"), "w", encoding="utf-8").write(wp)
+print("wordpress.html", len(wp))

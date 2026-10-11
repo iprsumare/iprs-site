@@ -1,4 +1,5 @@
-"""Gera links/compartilhar.png (prévia no WhatsApp/redes, 1200x630) e links/icone.png (ícone do celular, 180x180).
+"""Gera links/compartilhar.png (prévia no WhatsApp/redes, 1200x630) links/icone.png (ícone do celular, 180x180)
+e links/icone-site-512.png (Ícone do site no WordPress).
 Precisa do Google Chrome instalado."""
 import os, subprocess, tempfile
 RAIZ = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
@@ -34,3 +35,4 @@ def foto(html, saida, w, h):
 
 foto(COMPARTILHAR, os.path.join(RAIZ, "links", "compartilhar.png"), 1200, 630)
 foto(ICONE, os.path.join(RAIZ, "links", "icone.png"), 180, 180)
+foto(ICONE.replace("180px", "512px").replace("150px", "426px"), os.path.join(RAIZ, "links", "icone-site-512.png"), 512, 512)

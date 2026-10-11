@@ -35,16 +35,20 @@ python3 -m venv .venv && .venv/bin/pip install -r ferramentas/requirements.txt
 .venv/bin/python ferramentas/build_logo.py    # só se mudar o desenho do logo
 ```
 
-## Publicar a página de links (Hostinger)
+## Publicar a página de links (WordPress)
 
-A página fica em **https://iprsumare.com.br/links/**, como uma pasta comum ao lado do WordPress. Não precisa importar nada no WordPress.
+A página fica em **https://iprsumare.com.br/links/** como uma página comum do WordPress.
+O build gera `links/wordpress.html`, que vai inteiro num bloco **HTML personalizado**. A página roda isolada (Shadow DOM): o tema não muda o visual dela e ela não interfere no resto do site.
 
-1. Gere o pacote: `./ferramentas/empacotar_links.sh` → `dist/links.zip`
-2. hPanel → Arquivos → Gerenciador de arquivos → `public_html`
-3. Envie o `links.zip` e use **Extrair** ali mesmo. O resultado deve ser `public_html/links/index.html`.
-4. Para atualizar depois, repita, sobrescrevendo os arquivos.
+**Uma vez só — modelo em branco:** Aparência → Editor → Modelos → Adicionar modelo → *Modelo personalizado* "Em branco", com apenas o bloco **Conteúdo** (sem cabeçalho, rodapé nem título).
 
-Não crie no WordPress uma página com o endereço `links`, para não disputar o mesmo endereço.
+**Publicar ou atualizar:**
+1. `.venv/bin/python ferramentas/build_links.py && pbcopy < links/wordpress.html` (copia o código)
+2. WordPress → Páginas → Link Tree (endereço `links`) → apague o conteúdo → bloco **HTML personalizado** → cole.
+3. Painel lateral → Modelo: **Em branco** → Atualizar.
+
+**Prévia no WhatsApp e ícone:** envie `links/compartilhar.png` como Imagem destacada da página e `links/icone-site-512.png` em Configurações/Identidade do site → Ícone do site.
+
 Para mudar o endereço, edite `URL` em `ferramentas/build_links.py`.
 
 Créditos: Montserrat (SIL Open Font License, ver `ferramentas/OFL-Montserrat.txt`) e mapa Natural Earth (domínio público).
